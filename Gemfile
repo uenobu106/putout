@@ -38,7 +38,7 @@ gem 'haml-rails' #テンプレートエンジン
 gem 'erb2haml'
 gem 'font-awesome-rails' #WEBアイコン
 
-# gem 'devise'
+gem 'devise'
 # .envファイルに環境
 # gem 'dotenv-rails'
 # gem 'unicorn'
