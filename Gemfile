@@ -39,6 +39,9 @@ gem 'erb2haml'
 gem 'font-awesome-rails' #WEBアイコン
 
 gem 'devise'
+gem 'bing-search'
+gem 'cognitivebing'
+gem 'searchbing', '~> 0.2.6'
 # .envファイルに環境
 # gem 'dotenv-rails'
 # gem 'unicorn'
