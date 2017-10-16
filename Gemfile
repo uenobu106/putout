@@ -34,14 +34,20 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 
-gem 'haml-rails' #テンプレートエンジン
+gem 'haml-rails' #hamlテンプレートエンジン
 gem 'erb2haml'
 gem 'font-awesome-rails' #WEBアイコン
 
+gem ' bootstrap '、      '〜> 4.0.0.beta ' #マテリアルデザイン用ブートストラップ
+gem ' material-sass '、'〜> 4.0.0.beta '
+
 gem 'devise'
-gem 'bing-search'
-gem 'cognitivebing'
-gem 'searchbing', '~> 0.2.6'
+
+# API用のgem
+# gem 'bing-search'
+# gem 'cognitivebing'
+# gem 'searchbing', '~> 0.2.6'
+
 # .envファイルに環境
 # gem 'dotenv-rails'
 # gem 'unicorn'
