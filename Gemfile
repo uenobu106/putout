@@ -37,10 +37,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails' #hamlテンプレートエンジン
 gem 'erb2haml'
 gem 'font-awesome-rails' #WEBアイコン
-
-gem ' bootstrap '、      '〜> 4.0.0.beta ' #マテリアルデザイン用ブートストラップ
-gem ' material-sass '、'〜> 4.0.0.beta '
-
+#マテリアルデザイン用ブートストラップ
+gem 'jquery-rails'
+gem 'rails-ujs'
+gem 'jquery-turbolinks'
+gem 'bootstrap',     '~> 4.0.0.beta'
+gem 'material-sass', '~> 4.0.0.beta'
+gem 'material_icons'
 gem 'devise'
 
 # API用のgem

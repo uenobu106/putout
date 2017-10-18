@@ -1,0 +1,9 @@
+.container
+
+  %h1 新着ニュース
+  = link_to 'ニュースを追加する',new_post_path
+
+  - @post.each do |post|
+    %p= link_to post.title, "/posts/#{post.id}"
+    -# %p= post.content
+    %hr
