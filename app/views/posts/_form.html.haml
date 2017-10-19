@@ -1,0 +1,22 @@
+= form_with( model: @post, local: true ) do |form|
+  - if @post.errors.any?
+    #error_epxlanation
+      %h2
+        = @post.errors.count
+        件のエラー
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+
+= form_for @post do |f|
+  .field
+  = f.label :title, "タイトル"
+  = f.text_field :title, :id =>"focusedInput",:class =>"form-control"
+  .field
+  = f.label :content, "内容"
+  = f.text_area :content, :id =>"focusedInput", :class =>"form-control"
+  .field
+  = f.label :source, "ソース元"
+  = f.text_field :source, :id =>"focusedInput", :class =>"form-control"
+  .actions.submit
+    = f.submit "送信", :class =>"btn btn-default"
