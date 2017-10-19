@@ -7,3 +7,4 @@
     %p= @post.source
     %hr
     =link_to "編集する", edit_post_path
+    =link_to "削除する", post_path(@post),method: :delete, data:{ confirm:"本当に削除しますか？" }
