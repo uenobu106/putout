@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails' #hamlテンプレートエンジン
 gem 'erb2haml'
 gem 'font-awesome-rails' #WEBアイコン
+# gem 'bootstrap-social-rails' ソーシャルリンク
 #マテリアルデザイン用ブートストラップ
 gem 'jquery-rails'
 gem 'rails-ujs'
@@ -45,11 +46,15 @@ gem 'bootstrap',     '~> 4.0.0.beta'
 gem 'material-sass', '~> 4.0.0.beta'
 gem 'material_icons'
 gem 'devise'
+gem 'normalize-rails'
+gem 'annotate', '~> 2.7' #modelやroutesにスキーマ記述
 
 # API用のgem
 # gem 'bing-search'
 # gem 'cognitivebing'
 # gem 'searchbing', '~> 0.2.6'
+
+# gem 'acts-as-taggable-on' タグ管理
 
 # .envファイルに環境
 # gem 'dotenv-rails'
@@ -83,7 +88,7 @@ group :development do
   gem 'brakeman'
 
   gem 'bullet' # N+1問題
-
+  gem 'awesome_print'
   gem 'xray-rails'# Viewセクション確認
 end
 

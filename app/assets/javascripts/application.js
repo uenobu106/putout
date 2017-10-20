@@ -16,3 +16,5 @@
 
 //= require bootstrap
 //= require material
+//= require jquery
+//= require xray

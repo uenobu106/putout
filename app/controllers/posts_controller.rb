@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only:[ :show, :edit, :update, :destroy ]
+  before_action :set_post, only:[:show,:edit,:update,:destroy]
 
   def new
     @post = Post.new
@@ -20,9 +20,11 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = @post.comments.build
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update

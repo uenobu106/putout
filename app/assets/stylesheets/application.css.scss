@@ -1,0 +1,9 @@
+/*
+*= require normalize-rails
+*= require_tree .
+*= require_self
+*/
+@import "material";
+header{
+  margin-bottom: 80px;
+}
