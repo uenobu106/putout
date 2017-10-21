@@ -12,9 +12,10 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+
 
 //= require bootstrap
 //= require material
 //= require jquery
 //= require xray
+//= require_tree .
