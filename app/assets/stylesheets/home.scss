@@ -1,3 +1,96 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+
+}
+.flash {
+  color: white;
+  padding-top: 10px;
+}
+
+
+header {
+  width: 100%;
+  height: 500px;
+  background-color: #FF9800;
+}
+
+.navbar-default {
+    border: 0;
+}
+.navbar {
+    background-color: #FF9800 ;
+    color: #333;
+    margin-bottom: 0px;
+}
+.navbar-default {
+  .navbar-brand {
+    color: #333;
+    &:hover {
+      color: white;
+    }
+  }
+  .navbar-nav > li > a {
+    color: #ccc;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-nav > .open > a {
+    background-color: transparent;
+    color: white;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
+.alert.alert-info{
+  margin: 10px 0;
+}
+
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ccc;
+    text-align: center;
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+  .navbar-default .navbar-toggle {
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+.view {
+    background: image-url("ff.jpg")no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+// .full-bg-img{
+//     // background-image: image-url("ff.jpg");
+//     background: image-url("ff.jpg");
+//     background-size: cover;
+// }
+
+.container{
+  padding: 50px 0;
+  text-align: center;
+}
+
+footer {
+  // position:absolute;
+  width: 100%;
+  bottom: 0;
+  background-color:#FF9800;
+  padding: 20px 0 10px 0;
+  color: #333;
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
+}

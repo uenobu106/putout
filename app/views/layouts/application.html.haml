@@ -10,11 +10,54 @@
 
   %body
     %header
-      %nav.navbar.navbar-default.navbar-fixed-top
-        .container-fluid
-          .navbar-header
-          = link_to "Putout", root_path, class: "navbar-brand"
+      %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-indigo
+        %a.navbar-brand{:href => "#"}
+          %strong Putout
+        %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          %ul.navbar-nav.mr-auto
+            %li.nav-item.active
+              %a.nav-link{:href => "#"}
+                Home
+                %span.sr-only (current)
+            %li.nav-item
+              %a.nav-link{:href => "#"} Link
+            %li.nav-item
+              %a.nav-link{:href => "#"} Profile
+            - if user_signed_in?
+              %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'ログイン', new_user_session_path,:class =>"nav-link"
+              %li= link_to 'サインアップ', new_user_registration_path,:class =>"nav-link"
+      .view.hm-black-light
+        -# #notice.alert.alert-info{:role => "alert"}
+        -#   = notice
+        -#   = alert
+        -# .full-bg-img.flex-center
+        -#   .white-text.text-center.wow.fadeInUp
+    -# %header
+    -#   %nav.navbar.navbar-default.navbar-fixed-top
+    -#     .navbar-header
+    -#       .container-fluid
+    -#         %button.navbar-toggle.collapsed{"data-target" => "#navbarEexample", "data-toggle" => "collapse", :type => "button"}
+    -#           %span.sr-only Toggle navigation
+    -#           %span.icon-bar
+    -#           %span.icon-bar
+    -#           %span.icon-bar
+    -#         = link_to "Putout", root_path, class: "navbar-brand"
+    -#       - if user_signed_in?
+    -#         %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
+    -#       - else
+    -#         %li= link_to 'ログイン', new_user_session_path
+    -#         %li= link_to 'サインアップ', new_user_registration_path
+    -#   -# %p.notice= notice
+    -#   -# %p.alert= alert
+    -#   #notice.alert.alert-info{:role => "alert"}
+    -#     = notice
+    -#     = alert
 
+    = yield
 
-
-  = yield
+    %footer
+      %p Copyright 2017 @uenobu106

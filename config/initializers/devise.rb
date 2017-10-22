@@ -274,4 +274,25 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  # config.omniauth :google_oauth2, ##追記
+  # ENV['GOOGLE_APP_ID'], ##追記
+  # ENV['GOOGLE_APP_SECRET'],  ##追記
+  # name: :google ##追記
+
+  if Rails.env.production?
+    config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_ID_PRODUCTION"],
+    scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :twitter, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_ID_PRODUCTION"],
+    scope: 'email', display: 'popup', info_fields: 'name, email'
+    # config.omniauth :google, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_ID_PRODUCTION"],
+    # scope: 'email', display: 'popup', info_fields: 'name, email'
+  else
+    config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"],
+    scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :twitter, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"],
+    scope: 'email', display: 'popup', info_fields: 'name, email'
+    # config.omniauth :google, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"],
+    # scope: 'email', display: 'popup', info_fields: 'name, email'
+  end
 end

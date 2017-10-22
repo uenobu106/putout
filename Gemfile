@@ -45,8 +45,14 @@ gem 'jquery-turbolinks'
 gem 'bootstrap',     '~> 4.0.0.beta'
 gem 'material-sass', '~> 4.0.0.beta'
 gem 'material_icons'
-gem 'devise'
 gem 'normalize-rails'
+
+#ログイン、認証
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'annotate', '~> 2.7' #modelやroutesにスキーマ記述
 
 # API用のgem
@@ -90,6 +96,7 @@ group :development do
   gem 'bullet' # N+1問題
   gem 'awesome_print'
   gem 'xray-rails'# Viewセクション確認
+  gem 'dotenv-rails' #.envファイル
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

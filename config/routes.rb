@@ -27,15 +27,18 @@
 #                          PATCH  /posts/:id(.:format)                   posts#update
 #                          PUT    /posts/:id(.:format)                   posts#update
 #                          DELETE /posts/:id(.:format)                   posts#destroy
-# 
+#
 
 Rails.application.routes.draw do
   root 'posts#index'
-
-  devise_for :users
 
   #投稿とそれ対するコメント
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
+
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+
 end
