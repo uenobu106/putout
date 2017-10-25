@@ -18,6 +18,7 @@
 #  uid                    :string           default(""), not null
 #  provider               :string           default(""), not null
 #  image_url              :string
+#  name                   :string
 #
 # Indexes
 #

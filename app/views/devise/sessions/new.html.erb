@@ -1,26 +1,29 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="wrapper col-md-6 col-md-offset-4 col-sm-10">
+    <hr class="mt0">
+    <h2>Log in</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, autofocus: true, class: 'form-control',placeholder: "emailを入力してください" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control',placeholder: "パスワードを入力してください" %>
+        </div>
+        <div class="checkbox">
+          <label class="text-primary">
+            <%= f.check_box :remember_me %>
+            ログイン状態を保持する
+          </label>
+        </div>
+        <hr class="mt20 mb20">
+        <div class="mb10">
+          <%= f.submit 'ログイン', class: 'btn btn-success btn-block btn-lg' %>
+        </div>
+    <% end %>
+    <div class="devise_link">
+      <%= render "devise/shared/links" %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

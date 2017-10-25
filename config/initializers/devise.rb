@@ -280,19 +280,27 @@ Devise.setup do |config|
   # ENV['GOOGLE_APP_SECRET'],  ##追記
   # name: :google ##追記
 
+
+  require 'devise/orm/active_record'
+  config.omniauth :google_oauth2,
+                  ENV['GOOGLE_APP_ID'], # 環境変数に先ほど控えたクライアントIDを入れておく
+                  ENV['GOOGLE_APP_SECRET'], # 環境変数に先ほど控えたシークレットを入れておく
+                  name: :google,
+                  scope: %w(email)
+
   if Rails.env.production?
     config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_ID_PRODUCTION"],
     scope: 'email', display: 'popup', info_fields: 'name, email'
     config.omniauth :twitter, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_ID_PRODUCTION"],
     scope: 'email', display: 'popup', info_fields: 'name, email'
-    # config.omniauth :google, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_ID_PRODUCTION"],
+    # config.omniauth :google, ENV["GOOGLE_ID_PRODUCTION"], ENV["GOOGLE_ID_PRODUCTION"],
     # scope: 'email', display: 'popup', info_fields: 'name, email'
   else
-    config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"],
+    config.omniauth :facebook, ENV["FACEBOOK_ID_DEVELOPMENT"], ENV["FACEBOOK_SECRET_DEVELOPMENT"],
     scope: 'email', display: 'popup', info_fields: 'name, email'
-    config.omniauth :twitter, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"],
+    config.omniauth :twitter, ENV["TWITTER_ID_DEVELOPMENT"], ENV["TWITTER_SECRET_DEVELOPMENT"],
     scope: 'email', display: 'popup', info_fields: 'name, email'
-    # config.omniauth :google, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"],
+    # config.omniauth :google, ENV["GOOGLE_ID_PRODUCTION"], ENV["GOOGLE_SECRET_PRODUCTION"],
     # scope: 'email', display: 'popup', info_fields: 'name, email'
   end
 end

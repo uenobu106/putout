@@ -18,6 +18,7 @@
 #  uid                    :string           default(""), not null
 #  provider               :string           default(""), not null
 #  image_url              :string
+#  name                   :string
 #
 # Indexes
 #
@@ -34,17 +35,18 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :timeoutable, :omniauthable,omniauth_providers: %i(Google)
+         :omniauthable,omniauth_providers: %i(google facebook twitter)
 
 
-  def self.find_for_google(auth)
-    user = User.find_by(email: auth.info.email)
+  def self.find_for_google(auth, signed_in_resource=nil)
+    user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     unless user
       user = User.new(
         email: auth.info.email,
         provider: auth.provider,
         uid:      auth.uid,
+        image_url:   auth.info.image,
         password: Devise.friendly_token[0, 20],
       )
     end
@@ -87,5 +89,11 @@ class User < ApplicationRecord
     end
     user
   end
+
+  #ランダムなuidを作成するメソッド
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
+
 
 end
