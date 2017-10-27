@@ -10,10 +10,11 @@
 
   %body
     %header
-      %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-indigo
+      %nav.navbar.navbar-default
         .navbar-header
           = link_to "Putout", root_path,class:"navbar-brand"
           -# %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+          -#   %span.navbar-toggler-icon
           -#   %span.navbar-toggler-icon
         %ul.nav.navbar-nav.navbar-right
           %li.nav-item
@@ -21,7 +22,7 @@
           %li.nav-item
             = link_to "about", root_path, class:"nav-link"
           %li.nav-item
-            = link_to "ユーザー一覧", root_path, class:"nav-link"
+            = link_to "ユーザー一覧", users_path, class:"nav-link"
           - if user_signed_in?
             %li= link_to 'マイページ', edit_user_registration_path, :class =>"nav-link"
             %li= link_to 'ログアウト', destroy_user_session_path, method: :delete, :class =>"nav-link"
@@ -29,34 +30,12 @@
             %li= link_to 'ログイン', new_user_session_path, :class =>"nav-link"
             %li= link_to 'サインアップ', new_user_registration_path, :class =>"nav-link"
 
-      - if notice.present?
-        #notice.alert.alert-info{:role => "alert"}
-          %p
-            = notice
-            = alert
-        -# .full-bg-img.flex-center
-        -#   .white-text.text-center.wow.fadeInUp
-    -# %header
-    -#   %nav.navbar.navbar-default.navbar-fixed-top
-    -#     .navbar-header
-    -#       .container-fluid
-    -#         %button.navbar-toggle.collapsed{"data-target" => "#navbarEexample", "data-toggle" => "collapse", :type => "button"}
-    -#           %span.sr-only Toggle navigation
-    -#           %span.icon-bar
-    -#           %span.icon-bar
-    -#           %span.icon-bar
-    -#         = link_to "Putout", root_path, class: "navbar-brand"
-    -#       - if user_signed_in?
-    -#         %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
-    -#       - else
-    -#         %li= link_to 'ログイン', new_user_session_path
-    -#         %li= link_to 'サインアップ', new_user_registration_path
-    -#   -# %p.notice= notice
-    -#   -# %p.alert= alert
-    -#   #notice.alert.alert-info{:role => "alert"}
-    -#     = notice
-    -#     = alert
-
+    - if notice.present?
+      #notice.alert.alert-info{:role => "alert"}
+        %p
+          = notice
+          = alert
+    
     = yield
 
     %footer

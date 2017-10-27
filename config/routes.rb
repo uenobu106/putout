@@ -30,6 +30,7 @@
 #
 
 Rails.application.routes.draw do
+
   root 'posts#index'
 
   #投稿とそれ対するコメント
@@ -37,11 +38,15 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+  
+  resources :users, only: [:index, :show]
+
+
+
   #開発のメール
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

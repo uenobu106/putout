@@ -1,0 +1,7 @@
+.container
+  %h2 ユーザー一覧
+  - @users.each do |user|
+    .container-child.col-md-3.col-sm-3.col-xs-6
+      = profile_img(user)
+      = user.name
+      = user.email

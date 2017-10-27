@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
-
-}
 .flash {
   color: white;
   padding-top: 56px;
@@ -82,8 +79,16 @@ header {
 // }
 
 .container{
-  margin: 50px 0;
+  margin: 100px 0;
   // text-align: center;
+}
+
+.wrapper{
+  background-color: #FCFCFC;
+}
+
+.center{
+  margin: 0 auto;
 }
 
 .devise_link{
