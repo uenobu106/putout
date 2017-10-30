@@ -4,14 +4,20 @@
   %h1= @post.title
   %p= @post.content
   %p= @post.source
+  .right
+    %p= @post.created_at.strftime("%y/%m/%d %p %l:%M")
+
   %hr
   =link_to "編集する", edit_post_path(@post)
   =link_to "削除する", post_path(@post),method: :delete, data:{ confirm:"本当に削除しますか？" }
   %hr
   -# = form_for @comment, url:post_comments_path(@post, @comment) do |f|
   - @post.comments.each do |comment|
+    -# %p= comment.user.name
     %p= comment.content
-  = form_for ([@post, @comment]) do |f|
+    -# =link_to "コメント削除", post_comment_path(comment),method: :delete, data: { confirm: '本当に削除していいですか？' }
+
+  = form_for ([@post, @post.comments.build]) do |f|
     = f.label :content, "コメント"
-    = f.text_area :content,:class =>"form-control"
+    = f.text_area :content, :class =>"form-control"
     = f.submit "送信", :class =>"btn btn-default"

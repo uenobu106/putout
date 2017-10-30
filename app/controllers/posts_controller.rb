@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params_post)
+    @post.user_id = current_user.id
     if @post.save
       redirect_to '/posts'
     else
@@ -20,8 +21,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:comments).find(params[:id])
     @comment = @post.comments.build
+    @comments = @post.comments
   end
 
   def edit

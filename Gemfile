@@ -77,6 +77,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'hirb'         # モデルの出力結果を表形式で表示するGem Hirb.enable
