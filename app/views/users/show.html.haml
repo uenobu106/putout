@@ -1,22 +1,23 @@
 .container
-  .col-xs-12.col-md-8.col-md-offset-2
-    .user_panel
-      .panel.panel-default
-        .panel-heading
-          = @user.name
-          さん
-        %li.list-group-item
-          %strong.info_name メールアドレス
-          %br/
-          %hr/
-          = @user.email
+  .index-post
+    .col-xs-12.col-md-8.col-md-offset-2
+      .user_panel
+        .panel.panel-default
+          .panel-heading
+            = @user.name
+            さん
+          %li.list-group-item
+            %strong.info_name メールアドレス
+            %br/
+            %hr/
+            = @user.email
 
 
-      = link_to 'プロフィールを編集する', edit_user_registration_path, class: 'btn btn-primary'
-    .favorite_panel
-      .panel.panel-default
-        .panel-heading お気に入り一覧
-    -#     %ul.list-group
-    -#       - @favorite_houses.each do |house|
-    -#         %li.list-group-item
-    -#           = link_to house.title,  house_path(house)
+        = link_to 'プロフィールを編集する', edit_user_registration_path, class: 'btn btn-primary'
+      .favorite_panel
+        .panel.panel-default
+          .panel-heading お気に入り一覧
+      -#     %ul.list-group
+      -#       - @favorite_houses.each do |house|
+      -#         %li.list-group-item
+      -#           = link_to house.title,  house_path(house)

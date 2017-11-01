@@ -54,6 +54,9 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'annotate', '~> 2.7' #modelやroutesにスキーマ記述
+#画像update
+gem 'carrierwave'
+gem 'mini_magick'
 
 # API用のgem
 # gem 'bing-search'

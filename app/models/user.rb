@@ -23,6 +23,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  avatar                 :string
 #
 # Indexes
 #
@@ -33,7 +34,7 @@
 #
 
 class User < ApplicationRecord
-  
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   # has_many :reports, dependent: :destroy
@@ -42,7 +43,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable,
          :omniauthable,omniauth_providers: %i(google facebook twitter)
-
+  #carrierwave用の設定
+  mount_uploader :avatar, AvatarUploader
 
   def self.find_for_google(auth, signed_in_resource=nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
@@ -99,6 +101,27 @@ class User < ApplicationRecord
   #ランダムなuidを作成するメソッド
   def self.create_unique_string
     SecureRandom.uuid
+  end
+
+  #プロバイダーが空であれば、オーバーライド。
+  # プロバイダーあれば、現在のパスワードを削除。パスワードなしでも更新できるようにする
+  def update_with_password(params, *options)
+
+    if provider.blank?
+      super
+    else
+      params.delete :current_password
+      update_with_password(params, *options)
+    end
+
+  end
+  def update_with_password(params, *options)
+    if provider.blank?
+      super
+    else
+      params.delete :current_password
+      update_with_password(params, *options)
+    end
   end
 
 

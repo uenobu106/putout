@@ -21,8 +21,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = @post.comments.build
+    # binding.pry
     @comments = @post.comments
+    @comment = @post.comments.build
+    # binding.pry
   end
 
   def edit

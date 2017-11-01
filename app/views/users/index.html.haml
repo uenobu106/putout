@@ -1,6 +1,9 @@
 .container
-  %h2 ユーザー一覧
-  - @users.each do |user|
-    .container-child.col-md-3.col-sm-3.col-xs-6
-      = link_to profile_img(user), user_path(user)
-      = link_to user.name, user_path(user)
+  .index-post
+    %h2 ユーザー一覧
+    - @users.each do |user|
+      .container-child.col-md-3.col-sm-3.col-xs-6
+        .card.hoverable.card-margin
+          .card-content
+          = link_to profile_img(user), user_path(user)
+          = link_to user.name, user_path(user)

@@ -1,6 +1,7 @@
 .container
-  =link_to @post.title, "/posts/#{@post.id}"
-  =link_to "ニュース一覧", posts_path
-  %hr
-  %h1 編集
-  = render 'form'
+  .index-post
+    =link_to @post.title, "/posts/#{@post.id}"
+    =link_to "ニュース一覧", posts_path
+    %hr
+    %h1 編集
+    = render 'form'
