@@ -31,6 +31,15 @@
 
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+    resources :comments
+    resources :posts
+    resources :reports
+
+    root to: "users#index"
+  end
+
   root 'posts#index'
 
   #投稿とそれ対するコメント

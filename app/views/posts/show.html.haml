@@ -16,7 +16,7 @@
     - @comments.each do |comment|
       -# - binding.pry
       - unless comment.id.nil?
-        %p= link_to comment.user.name, user_path(@user)
+        %p= link_to comment.user.name, user_path(comment.user)
         %p= comment.content
       -# =link_to "コメント削除", post_comment_path(comment),method: :delete, data: { confirm: '本当に削除していいですか？' }
 

@@ -58,6 +58,9 @@ gem 'annotate', '~> 2.7' #modelやroutesにスキーマ記述
 gem 'carrierwave'
 gem 'mini_magick'
 
+#管理画面
+gem 'administrate', '~> 0.8.1'
+
 # API用のgem
 # gem 'bing-search'
 # gem 'cognitivebing'
