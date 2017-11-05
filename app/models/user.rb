@@ -24,6 +24,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  avatar                 :string
+#  role                   :integer          default(2), not null
 #
 # Indexes
 #
@@ -45,6 +46,9 @@ class User < ApplicationRecord
          :omniauthable,omniauth_providers: %i(google facebook twitter)
   #carrierwave用の設定
   mount_uploader :avatar, AvatarUploader
+
+  #roleカラム
+  enum role: { admin: 1, member: 2}
 
   def self.find_for_google(auth, signed_in_resource=nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
@@ -115,6 +119,7 @@ class User < ApplicationRecord
     end
 
   end
+
   def update_with_password(params, *options)
     if provider.blank?
       super

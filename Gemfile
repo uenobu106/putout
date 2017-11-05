@@ -60,7 +60,7 @@ gem 'mini_magick'
 
 #管理画面
 gem 'administrate', '~> 0.8.1'
-
+gem 'cancancan'
 # API用のgem
 # gem 'bing-search'
 # gem 'cognitivebing'

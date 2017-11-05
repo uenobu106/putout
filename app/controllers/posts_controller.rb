@@ -21,9 +21,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    # binding.pry
+
     @comments = @post.comments
-    @comment = @post.comments.build
+    @comment = Post.find(params[:id]).comments.build
+    # binding.pry
+    # @comments = @post.comments
+    # @comment = @post.comments.build
     # binding.pry
   end
 

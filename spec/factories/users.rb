@@ -24,6 +24,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  avatar                 :string
+#  role                   :integer          default(2), not null
 #
 # Indexes
 #
