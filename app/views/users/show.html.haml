@@ -4,14 +4,14 @@
       .user_panel
         .panel.panel-default
           .panel-heading
-            = profile_img(@user)
-            = @user.name
-            さん
-          %li.list-group-item
-            %strong.info_name メールアドレス
-            %br/
-            %hr/
-            = @user.email
+            %li.list-group-item
+              = profile_img(@user)
+              = @user.name
+              さん
+              %br/
+              %hr/
+              %strong.info_name メールアドレス
+              %p= @user.email
 
 
         = link_to 'プロフィールを編集する', edit_user_registration_path, class: 'btn btn-primary'

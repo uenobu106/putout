@@ -16,6 +16,15 @@ h2{
 }
 
 img{
-  max-width: 25%;
+  max-width: 100%;
   height: auto;
+}
+.flex{
+  display: inline-flex;
+    .user_profile_content{
+      p{
+        margin: 5px 0;
+      }
+    }
+  // justify-content:
 }

@@ -17,7 +17,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.all.order("created_at desc");
+    @posts = Post.all.order("created_at desc");
+    # binding.pry
   end
 
   def show

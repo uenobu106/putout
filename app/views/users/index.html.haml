@@ -4,6 +4,8 @@
     - @users.each do |user|
       .container-child.col-md-3.col-sm-3.col-xs-6
         .card.hoverable.card-margin
-          .card-content
-          = link_to profile_img(user), user_path(user)
-          = link_to user.name, user_path(user)
+          .card-content.user_profile.flex
+            = link_to profile_img(user), user_path(user)
+            .user_profile_content
+              = link_to user.name, user_path(user)
+              %p= '所属:'
