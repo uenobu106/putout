@@ -1,6 +1,7 @@
 .container
   .index-post
-    =link_to "ニュース一覧に戻る", '/posts'
+    = link_to "ニュース一覧に戻る", '/posts'
+    = link_to "お気に入り登録", post_likes_path(params[:id]), method: :post, :class => 'btn btn-primary'
     %hr
     %h1= @post.title
     %p= @post.content

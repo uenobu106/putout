@@ -25,6 +25,8 @@ class PostsController < ApplicationController
 
     @comments = @post.comments
     @comment = Post.find(params[:id]).comments.build
+    @like = Post.find(params[:id]).likes.build
+    # @like.user_id = current_user.id
     # binding.pry
     # @comments = @post.comments
     # @comment = @post.comments.build

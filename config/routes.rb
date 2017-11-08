@@ -42,16 +42,22 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  #投稿とそれ対するコメント
+  #投稿とそれに対するコメント
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
+
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  resources :likes, only: [:destroy]
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  
+
   resources :users, only: [:index, :show]
 
 
