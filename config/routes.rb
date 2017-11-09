@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  resources :likes, only: [:destroy]
+  # resources :likes, only: [:destroy]
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
