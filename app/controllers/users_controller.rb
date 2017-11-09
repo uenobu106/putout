@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @user = current_user
+    # @user = current_user^
     # @posts = Post.find(params[:id])
     # @post = Post.find(params[:post_id])
     # @likes = @posts.likes.find_by(user_id: @user.id)
