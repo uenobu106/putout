@@ -18,6 +18,5 @@
         .panel.panel-default
           .panel-heading お気に入りニュース一覧
           - current_user.likes.each do |like|
-          - binding.pry
             %hr
             = link_to like.post.title, root_path

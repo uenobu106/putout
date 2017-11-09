@@ -13,3 +13,4 @@
         .right
           = link_to 'コメント数:', post_path(post)
           = link_to post.comments.size, post_path(post)
+  = paginate @posts
