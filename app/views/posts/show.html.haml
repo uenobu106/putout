@@ -2,14 +2,16 @@
   .index-post
     = link_to "ニュース一覧に戻る", '/posts'
     - if @like.present?
-      = link_to "お気に入り解除", post_like_path(@post), method: :delete, :class => 'btn'
+      .fav-btn.right
+        = link_to "お気に入り解除", post_like_path(@post), method: :delete, :class => 'btn'
     - else
-      = link_to "お気に入り登録", post_likes_path(params[:id]), method: :post, :class => 'btn btn-primary'
+      .fav-btn.right
+        = link_to "お気に入り登録", post_likes_path(params[:id]), method: :post, :class => 'btn btn-primary'
 
     %hr
-    %h1= @post.title
-    %p= @post.content
-    %p= @post.source
+    %h1= link_to "#{@post.title}", href="#{@post.content}", :target => "_blank"
+    -# %p= @post.content
+    %p= link_to "#{@post.source}", href="#{@post.content}", :target => "_blank"
     .right
       %p= @post.created_at.strftime("%y/%m/%d %p %l:%M")
 
@@ -22,12 +24,14 @@
     - @comments.each do |comment|
       -# - binding.pry
       -# - unless comment.id.nil?
+
       .user_profile.flex
         %p= link_to profile_img(comment.user), user_path(comment.user)
         .user_profile_content
           %p= link_to comment.user.name, user_path(comment.user)
           %p= '所属:'
       %p= comment.content
+      %hr
       -# =link_to "コメント削除", post_comment_path(comment),method: :delete, data: { confirm: '本当に削除していいですか？' }
 
     = form_for ([@post, @comment]) do |f|

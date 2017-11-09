@@ -13,12 +13,11 @@
               %strong.info_name メールアドレス
               %p= @user.email
 
-
         = link_to 'プロフィールを編集する', edit_user_registration_path, class: 'btn btn-primary'
       .favorite_panel
         .panel.panel-default
-          .panel-heading お気に入り一覧
-      -#     %ul.list-group
-      -#       - @favorite_houses.each do |house|
-      -#         %li.list-group-item
-      -#           = link_to house.title,  house_path(house)
+          .panel-heading お気に入りニュース一覧
+          - current_user.likes.each do |like|
+          - binding.pry
+            %hr
+            = link_to like.post.title, root_path
