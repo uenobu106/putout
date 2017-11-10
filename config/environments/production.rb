@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #herokuセカンドグリッドメールの設定
-  config.action_mailer.default_url_options = { host: 'https://putout.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://gentle-scrubland-76195.com/' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
