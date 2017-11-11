@@ -44,7 +44,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable,
-         :omniauthable,omniauth_providers: %i(google facebook twitter)
+         :omniauthable,omniauth_providers: %i(facebook twitter)
   #carrierwave用の設定
   mount_uploader :avatar, AvatarUploader
 
@@ -52,14 +52,14 @@ class User < ApplicationRecord
   enum role: { admin: 1, member: 2}
 
   def self.find_for_google(auth, signed_in_resource=nil)
-    user = User.find_by(provider: auth.provider, uid: auth.uid, email: auth.info.email)
+    user = User.find_by(provider: auth.provider, uid: auth.uid)
 
     unless user
       user = User.new(
         name:     auth.extra.raw_info.name,
         provider: auth.provider,
         uid:      auth.uid,
-        email:    auth.info.email,
+        email:    "#{auth.uid}-#{auth.provider}@example.com",
         image_url:   auth.info.image,
         password: Devise.friendly_token[0, 20]
       )
@@ -110,7 +110,7 @@ class User < ApplicationRecord
   end
 
   #プロバイダーが空であれば、オーバーライド。
-  # プロバイダーあれば、現在のパスワードを削除。パスワードなしでも更新できるようにする
+  #プロバイダーあれば、現在のパスワードを削除。パスワードなしでも更新できるようにする
   def update_with_password(params, *options)
 
     if provider.blank?
