@@ -283,11 +283,14 @@ Devise.setup do |config|
 
 
   require 'devise/orm/active_record'
+
   config.omniauth :google_oauth2,
                   ENV['GOOGLE_APP_ID'], # 環境変数に先ほど控えたクライアントIDを入れておく
                   ENV['GOOGLE_APP_SECRET'], # 環境変数に先ほど控えたシークレットを入れておく
                   name: :google,
-                  scope: %w(email)
+                  scope: %w(email),
+                  display: 'popup',
+                  info_fields: 'name, email'
 
   if Rails.env.production?
     config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'

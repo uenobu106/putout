@@ -52,15 +52,16 @@ class User < ApplicationRecord
   enum role: { admin: 1, member: 2}
 
   def self.find_for_google(auth, signed_in_resource=nil)
-    user = User.find_by(provider: auth.provider, uid: auth.uid)
+    user = User.find_by(provider: auth.provider, uid: auth.uid, email: auth.info.email)
 
     unless user
       user = User.new(
-        email: auth.info.email,
+        name:     auth.extra.raw_info.name,
         provider: auth.provider,
         uid:      auth.uid,
+        email:    auth.info.email,
         image_url:   auth.info.image,
-        password: Devise.friendly_token[0, 20],
+        password: Devise.friendly_token[0, 20]
       )
     end
       user.save
