@@ -3,12 +3,13 @@
     .flex-between
       .left
         = link_to "ニュース一覧に戻る", '/posts'
-      - if @like.present?
-        .fav-btn.right
-          = link_to "お気に入り解除", post_like_path(@post), method: :delete, :class => 'btn'
-      - else
-        .fav-btn.right
-          = link_to "お気に入り登録", post_likes_path(params[:id]), method: :post, :class => 'btn btn-raised btn-info'
+      - unless current_user.nil?
+        - if @like.present?
+          .fav-btn.right
+            = link_to "お気に入り解除", post_like_path(@post), method: :delete, :class => 'btn'
+        - else
+          .fav-btn.right
+            = link_to "お気に入り登録", post_likes_path(params[:id]), method: :post, :class => 'btn btn-raised btn-info'
     %hr
     %h1= link_to "#{@post.title}", href="#{@post.content}", :target => "_blank"
     -# %p= @post.content

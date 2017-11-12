@@ -25,11 +25,11 @@ class PostsController < ApplicationController
   def show
     @comments = @post.comments
     @comment = Post.find(params[:id]).comments.build
-    # if current_user
-    @like = current_user.likes.find_by(post_id: @post.id)
-    # else
-    #   @like = current_user.likes.find_by(post_id: @post.id)
-    # end
+    if current_user
+      @like = current_user.likes.find_by(post_id: @post.id)
+    else
+      @like = Post.find(params[:id]).likes.build
+    end
     # @like = Post.find(params[:id]).likes.build
     # @like.user_id = current_user.id
     # binding.pry
