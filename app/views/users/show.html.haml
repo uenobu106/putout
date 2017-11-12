@@ -12,11 +12,10 @@
               %hr/
               %strong.info_name メールアドレス
               %p= @user.email
+      %hr
       .favorite_panel
         .panel.panel-default
           .panel-heading お気に入りニュース一覧
           - unless @user.likes.nil?
             - @user.likes.each do |like|
-              %hr
-              -binding.pry
-              = link_to like.post.title, post_path(like.post_id)
+              %p= link_to like.post.title, post_path(like.post_id)

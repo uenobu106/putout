@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+    %meta{:content => "initial-scale=1, shrink-to-fit=no, width=device-width", :name => "viewport"}/
     %title Putout
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -13,29 +13,27 @@
       %nav.navbar.navbar-default
         .navbar-header
           = link_to "Putout", root_path,class:"navbar-brand"
-          -# %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-          -#   %span.navbar-toggler-icon
-          -#   %span.navbar-toggler-icon
         %ul.nav.navbar-nav.navbar-right
-          %li.nav-item
-            = link_to "Home", root_path, class:"nav-link"
-          %li.nav-item
-            = link_to "about", root_path, class:"nav-link"
+          -# %li.nav-item
+          -#   = link_to "Home", root_path, class:"nav-link"
+          -# %li.nav-item
+          -#   = link_to "about", root_path, class:"nav-link"
           %li.nav-item
             = link_to "ユーザー一覧", users_path, class:"nav-link"
           - if user_signed_in?
-            %li= link_to 'マイページ', edit_user_registration_path, :class =>"nav-link"
-            %li= link_to 'ログアウト', destroy_user_session_path, method: :delete, :class =>"nav-link"
+            %li.nav-item= link_to 'マイページ', edit_user_registration_path, :class =>"nav-link"
+            %li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, :class =>"nav-link"
           - else
-            %li= link_to 'ログイン', new_user_session_path, :class =>"nav-link"
-            %li= link_to 'サインアップ', new_user_registration_path, :class =>"nav-link"
+            %li.nav-item= link_to 'ログイン', new_user_session_path, :class =>"nav-link"
+            %li.nav-item= link_to 'サインアップ', new_user_registration_path, :class =>"nav-link"
+
 
     - if notice.present?
       #notice.alert.alert-info{:role => "alert"}
         %p
           = notice
           = alert
-    
+
     = yield
 
     %footer
