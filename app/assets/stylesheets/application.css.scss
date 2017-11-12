@@ -8,6 +8,9 @@
 
 body{
   background-color: #FEEACC;
+  p{
+    margin-bottom: 0;
+  }
 }
 
 h2{
@@ -27,4 +30,10 @@ img{
       }
     }
   // justify-content:
+}
+.flex-between {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: flex;
+    justify-content: space-between;
 }

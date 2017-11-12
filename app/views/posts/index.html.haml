@@ -1,16 +1,21 @@
 .view.hm-black-light
 .container
   %h1 新着ニュース
-  .news_post= link_to 'ニュースを追加する',new_post_path
+  - unless current_user.nil? or current_user.member?
+    .news_post= link_to 'ニュースを追加する',new_post_path
   - @posts.each do |post|
     .card.hoverable.card-margin
       .card-content
         %p= link_to post.title, post_path(post)
         -# %p= post.content
-        =link_to '編集', edit_post_path(post.id)
-        =link_to '削除', post_path(post.id),method: :delete, data: { confirm: '本当に削除していいですか？'}
+        - unless current_user.nil? or current_user.member?
+          =link_to '編集', edit_post_path(post.id)
+          =link_to '削除', post_path(post.id),method: :delete, data: { confirm: '本当に削除していいですか？'}
         %hr
-        .right
-          = link_to 'コメント数:', post_path(post)
-          = link_to post.comments.size, post_path(post)
+        .flex-between
+          .left
+            = post.source
+          .right
+            = link_to 'コメント数:', post_path(post)
+            = link_to post.comments.size, post_path(post)
   = paginate @posts

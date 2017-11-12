@@ -18,16 +18,19 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.all.order("created_at desc");
-    @posts = Post.page(params[:page]).per(5)
+    @posts = Post.page(params[:page]).per(5).reverse_order
     # binding.pry
   end
 
   def show
-
     @comments = @post.comments
     @comment = Post.find(params[:id]).comments.build
-    # @like = Post.find(params[:id]).likes.build
+    # if current_user
     @like = current_user.likes.find_by(post_id: @post.id)
+    # else
+    #   @like = current_user.likes.find_by(post_id: @post.id)
+    # end
+    # @like = Post.find(params[:id]).likes.build
     # @like.user_id = current_user.id
     # binding.pry
     # @comments = @post.comments

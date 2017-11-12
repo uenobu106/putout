@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .container{
     h1{
-      text-align: center;
+      // text-align: center;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    p{
+      margin-bottom: 0;
     }
     .news_post{
       text-align: right;
