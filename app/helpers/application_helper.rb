@@ -8,7 +8,7 @@ module ApplicationHelper
       img_url = 'no_image.png'
     end
 
-    image_tag(img_url, alt: user.name, class:"rounded-circle", width="50")
+    image_tag(img_url, alt: user.name, class:"rounded-circle", width:50)
   end
 
 end
